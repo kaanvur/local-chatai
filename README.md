@@ -86,11 +86,11 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 
 ## 🤖 Local LLM Model API
 ### Keenetic Modem Ayarları
-- Keenetic Modem ayarları için aşağıdaki adımları izleyin:
-  1. Keenetic Modem'a bağlanın. (192.168.1.1)
-  2. Network Rules  > Domain names altından bir domain adı ekleyin
-  3. Network Rules  > Domain names > add
-![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
+1. Keenetic Modem ayarları için aşağıdaki adımları izleyin:
+  - Keenetic Modem'a bağlanın. (192.168.1.1)
+  - Network Rules  > Domain names altından bir domain adı ekleyin
+  - Network Rules  > Domain names > add
+  - ![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
 
 ## 📝 Lisans
 
