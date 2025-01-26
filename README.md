@@ -1,6 +1,6 @@
 # Local ChatGPT - Sohbet Botu
 
-herhangi bir endpoint ile uyumlu yapay zeka destekli bir chatbot uygulaması. OpenAI API kullanarak güvenilir ve hızlı bir şekilde sorulara cevaplar sunar.
+herhangi bir endpoint ile uyumlu yapay zeka destekli bir chatbot uygulaması. Local host edilen API kullanarak güvenilir ve hızlı bir şekilde sorulara cevaplar sunar.
 
 ## 🌟 Özellikler
 
