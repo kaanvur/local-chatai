@@ -91,6 +91,7 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
   - Network Rules  > Domain names altından bir domain adı ekleyin
   - Network Rules  > Domain names > add
   - ![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
+### Cloudflare Ayarları
 2. Cloudflare tunnel ayarları için aşağıdaki adımları izleyin:
   - Cloudflare üzergiden domain adınızı ekleyin.
   - Cloudflare dashboard'a gidin.
