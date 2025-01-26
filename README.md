@@ -25,7 +25,7 @@ herhangi bir endpoint ile uyumlu yapay zeka destekli bir chatbot uygulaması. Op
 ## 📁 Proje Yapısı
 
 ```
-sanalimam/
+local-chatai/
 ├── src/
 │   ├── lib/
 │   │   ├── components/     # UI bileşenleri
@@ -84,6 +84,9 @@ VITE_PLAYHTTTP_USER_ID=your_playhttp_user_id
 VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 ```
 
+## 🤖 Local LLM Model API
+
+![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
 
 ## 📝 Lisans
 
