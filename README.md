@@ -90,7 +90,13 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
   - Keenetic Modem'a bağlanın. (192.168.1.1)
   - Network Rules  > Domain names altından bir domain adı ekleyin
   - Network Rules  > Domain names > add
-  - ![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
+![Local LLM Model Setup](guide_image/keenetic_modem_ayar.jpg)
+2. Cloudflare tunnel ayarları için aşağıdaki adımları izleyin:
+  - Cloudflare dashboard'a gidin.
+  - Tunnel > Create a tunnel
+  - Cloudflared seçeneğini seçin.
+  - ![Local LLM Model Setup](guide_image/cloudflare_tunnel1.jpg)
+  - ![Local LLM Model Setup](guide_image/cloudflare_tunnel2.jpg)
 
 ## 📝 Lisans
 
