@@ -89,7 +89,7 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 1. Modelinizi çalıştırdığınzı sunucuda (AnythingLLM, LM Studo, Open WebUi, v.s.):
   - ![Local LLM Model Setup](guide_image/local_llm_model_setup.jpg)
 ### Keenetic Modem Ayarları
-1. Keenetic Modem ayarları için aşağıdaki adımları izleyin:
+2. Keenetic Modem ayarları için aşağıdaki adımları izleyin:
   - Keenetic Modem'a bağlanın. (192.168.1.1)
   - Network Rules  > Domain names altından bir domain adı ekleyin
   - Network Rules  > Domain names > add
@@ -105,6 +105,15 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
   - Public Hostname alanına domain adınıza subdomain ekleyin. (örnek: apiurl.yourdomain.com)
   - service kısımına local ip ve port numarasını girin.
   - ![Local LLM Model Setup](guide_image/cloudflare_tunnel2.jpg)
+
+## 💻 Deployment
+### Cloudflare Ayarları
+1. Cloudflare > Compute (Workers) > Workers & Pages sayfasına gidin.
+2. Sayfanın üstündeki "Create" butonuna tıklayın.
+3. Pages sekmesine tıklayın ve "Connect to Git" butonuna tıklayın. buradan github hesabınızı bağlayın ve projenizi seçin. ya da proje dosyalarını "upload assets" kısmından yükleyin.
+4. Burada proje isminizi girin size proje isminizde bir development url verecektir ayarları da yapın ve "Deploy Site" butonuna tıklayın.
+5. ![Local LLM Model Setup](guide_image/cloudflare_deploy.jpg)
+
 
 ## 📝 Lisans
 
