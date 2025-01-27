@@ -85,6 +85,9 @@ VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 ```
 
 ## 🤖 Local LLM Model API
+### Local LLM Model API Ayarları
+1. Modelinizi çalıştırdığınzı sunucuda (AnythingLLM, LM Studo, Open WebUi, v.s.):
+  - ![Local LLM Model Setup](guide_image/local_llm_model_setup.jpg)
 ### Keenetic Modem Ayarları
 1. Keenetic Modem ayarları için aşağıdaki adımları izleyin:
   - Keenetic Modem'a bağlanın. (192.168.1.1)
