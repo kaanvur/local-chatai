@@ -54,7 +54,7 @@
 	async function checkWorkspaceStatus() {
 		toast.info('Hizmet durumu kontrol ediliyor');
 		try {
-			const response = await fetch(`https://dini-bilgiler.pages.dev/api/chat`);
+			const response = await fetch(`${process.env.PUBLIC_API_URL}/chat`);
 			const data = await response.json();
 			workspaceStatus = data.status;
 			if (workspaceStatus === 'offline') {
@@ -67,7 +67,7 @@
 	}
 	async function getChatHistory() {
 		try {
-			const response = await fetch(`https://dini-bilgiler.pages.dev/api/history?sessionId=${$sessionId}`);
+			const response = await fetch(`${process.env.PUBLIC_API_URL}/history?sessionId=${$sessionId}`);
 			if (!response.ok) {
 				throw new Error('Failed to fetch chat history');
 			}
