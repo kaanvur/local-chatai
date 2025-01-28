@@ -32,6 +32,10 @@
 		--sidebar-accent-foreground: 240 5.9% 10%;
 		--sidebar-border: 220 13% 91%;
 		--sidebar-ring: 217.2 91.2% 59.8%;
+
+		--pattern-color: #f9f3f3;
+		--pattern-bg: #fffcfc;
+		--cell-size: 33px;
 	}
 
 	.dark {
@@ -62,6 +66,9 @@
 		--sidebar-accent-foreground: 240 4.8% 95.9%;
 		--sidebar-border: 240 3.7% 15.9%;
 		--sidebar-ring: 217.2 91.2% 59.8%;
+
+		--pattern-color: #0a191e;
+		--pattern-bg: #070d0f;
 	}
 }
 
@@ -71,5 +78,29 @@
 	}
 	body {
 		@apply bg-background text-foreground;
+		--double-cell: calc(2 * var(--cell-size));
+
+		background:
+			radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, var(--pattern-color) 68% 70%, #0000 72%)
+				var(--cell-size) var(--cell-size) / var(--double-cell) var(--double-cell),
+			radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, var(--pattern-color) 68% 70%, #0000 72%)
+				var(--cell-size) var(--cell-size) / var(--double-cell) var(--double-cell),
+			radial-gradient(35.36% 35.36% at 100% 25%, #0000 66%, var(--pattern-color) 68% 70%, #0000 72%)
+				0 0 / var(--double-cell) var(--double-cell),
+			radial-gradient(35.36% 35.36% at 0 75%, #0000 66%, var(--pattern-color) 68% 70%, #0000 72%) 0
+				0 / var(--double-cell) var(--double-cell),
+			repeating-conic-gradient(var(--pattern-bg) 0 25%, #0000 0 50%) 0 0 / var(--double-cell)
+				var(--double-cell),
+			radial-gradient(#0000 66%, var(--pattern-color) 68% 70%, #0000 72%) 0
+				calc(var(--cell-size) / 2) / var(--cell-size) var(--cell-size) var(--pattern-bg);
+	}
+}
+
+@layer utilities {
+	.glassy {
+		background:transparent;
+		box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+		backdrop-filter: blur(2px);
+		-webkit-backdrop-filter: blur(2px);
 	}
 }

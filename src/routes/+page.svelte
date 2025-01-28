@@ -55,7 +55,7 @@
 	async function checkWorkspaceStatus() {
 		toast.info('Hizmet durumu kontrol ediliyor');
 		try {
-			const response = await fetch('/api/chat');
+			const response = await fetch('https://dini-bilgiler.pages.dev/api/chat');
 			const data = await response.json();
 			workspaceStatus = data.status;
 			if (workspaceStatus === 'offline') {
@@ -68,7 +68,7 @@
 	}
 	async function getChatHistory() {
 		try {
-			const response = await fetch(`/api/history?sessionId=${$sessionId}`);
+			const response = await fetch(`https://dini-bilgiler.pages.dev/api/history?sessionId=${$sessionId}`);
 			if (!response.ok) {
 				throw new Error('Failed to fetch chat history');
 			}
@@ -89,7 +89,7 @@
 </script>
 
 <div class="grid h-dvh place-items-center">
-	<Card.Root class="mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col overflow-auto">
+	<Card.Root class="mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col overflow-auto glassy">
 		<Card.Header>
 			<div class="flex items-center justify-between">
 				<div>

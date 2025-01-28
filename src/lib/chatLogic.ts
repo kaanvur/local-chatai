@@ -10,7 +10,7 @@ export const controller = writable<AbortController | null>(null);
 export async function voiceReading(text: string) {
 	activeReading.set(true);
 	try {
-		const response = await fetch('/api/read', {
+		const response = await fetch('https://dini-bilgiler.pages.dev/api/read', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -47,7 +47,7 @@ export async function sendMessage(message: string) {
 	controller.set(newController);
 
 	try {
-		const response = await fetch('/api/chat', {
+		const response = await fetch('https://dini-bilgiler.pages.dev/api/chat', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'

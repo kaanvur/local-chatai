@@ -5,15 +5,16 @@ import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
-	preprocess: vitePreprocess(),
-
 	kit: {
-		adapter: adapterStatic({
-		  fallback: 'index.html'
-		})
-	  }
+	  adapter: adapterStatic({
+		fallback: 'index.html', // Enable SPA fallback
+		pages: 'build',
+		assets: 'build',
+		precompress: false,
+		strict: true
+	  })
+	},
+	preprocess: vitePreprocess()
 };
 
 export default config;
