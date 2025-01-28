@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
-	import { env } from '$env/dynamic/private';
+	import { env } from '$env/dynamic/public';
 	import { marked } from 'marked';
 	import { toast } from 'svelte-sonner';
 	import { Button } from '$lib/components/ui/button/index.js';
@@ -55,7 +55,7 @@
 	async function checkWorkspaceStatus() {
 		toast.info('Hizmet durumu kontrol ediliyor');
 		try {
-			const response = await fetch(`${env.VITE_API_URL_MW}/chat`);
+			const response = await fetch(`${env.PUBLIC_API_URL}/chat`);
 			const data = await response.json();
 			workspaceStatus = data.status;
 			if (workspaceStatus === 'offline') {
@@ -68,7 +68,7 @@
 	}
 	async function getChatHistory() {
 		try {
-			const response = await fetch(`${env.VITE_API_URL_MW}/history?sessionId=${$sessionId}`);
+			const response = await fetch(`${env.PUBLIC_API_URL}/history?sessionId=${$sessionId}`);
 			if (!response.ok) {
 				throw new Error('Failed to fetch chat history');
 			}
