@@ -118,18 +118,28 @@
 
 	onMount(async () => {
 		await Promise.all([getChatHistory(), checkWorkspaceStatus()]);
-		window.addEventListener('beforeinstallprompt', (e: Event) => {
-			e.preventDefault();
-			deferredPrompt = e as BeforeInstallPromptEvent;
-		});
+		if (window) {
+			console.log('window available');
+			if ('serviceWorker' in navigator) {
+				console.log('service worker supported');
+			} else {
+				console.log('service worker not supported');
+			}
+			window.addEventListener('beforeinstallprompt', (e) => {
+				console.log('beforeinstallprompt event fired');
+				e.preventDefault();
+				deferredPrompt = e as BeforeInstallPromptEvent;
+			});
+		}
 	});
 
 	async function installPWA() {
+		console.log(deferredPrompt);
+
 		if (!deferredPrompt) return;
 
 		deferredPrompt.prompt();
 		const { outcome } = await deferredPrompt.userChoice;
-
 		if (outcome === 'accepted') {
 			console.log('PWA installed');
 		}
