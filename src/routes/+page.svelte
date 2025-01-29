@@ -295,9 +295,6 @@
 			<Drawer.Description>Telefonunuzdan ya da bilgisayarınız kolay erişim sağla</Drawer.Description
 			>
 		</Drawer.Header>
-		<Drawer.Footer>
-				<Button onclick={installPWA}>Ekle</Button>
-			<Drawer.Close>İptal</Drawer.Close>
-		</Drawer.Footer>
+
 	</Drawer.Content>
 </Drawer.Root>
