@@ -108,8 +108,9 @@
 
 	$effect(() => {
 		if (typeof window !== 'undefined') {
-			isPWA = window.matchMedia('(display-mode: window-controls-overlay)').matches ||
-			window.matchMedia('(display-mode: standalone)').matches;
+			isPWA =
+				window.matchMedia('(display-mode: window-controls-overlay)').matches ||
+				window.matchMedia('(display-mode: standalone)').matches;
 			drawerOpen = !isPWA;
 		}
 	});
@@ -125,10 +126,10 @@
 
 	async function installPWA() {
 		if (!deferredPrompt) return;
-		
+
 		deferredPrompt.prompt();
 		const { outcome } = await deferredPrompt.userChoice;
-		
+
 		if (outcome === 'accepted') {
 			console.log('PWA installed');
 		}
@@ -287,14 +288,16 @@
 </div>
 
 <Drawer.Root open={drawerOpen}>
-	<Drawer.Content class="container mx-auto">
+	<Drawer.Content class="container">
 		<Drawer.Header>
 			<Drawer.Title>Uygulama olarak eklemek ister misiniz?</Drawer.Title>
 			<Drawer.Description>Telefonunuzdan ya da bilgisayarınız kolay erişim sağla</Drawer.Description
 			>
 		</Drawer.Header>
 		<Drawer.Footer>
-				<Drawer.Close onclick={installPWA} class={buttonVariants({ variant: 'default' })}>Ekle</Drawer.Close>
+			<Drawer.Close onclick={installPWA} class={buttonVariants({ variant: 'default' })}
+				>Ekle</Drawer.Close
+			>
 			<Drawer.Close>İptal</Drawer.Close>
 		</Drawer.Footer>
 	</Drawer.Content>
