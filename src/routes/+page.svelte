@@ -1,4 +1,9 @@
 <script lang="ts">
+	interface BeforeInstallPromptEvent extends Event {
+		prompt(): Promise<void>;
+		userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
+	}
+
 	import { onMount } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	import { marked } from 'marked';
@@ -108,13 +113,13 @@
 			drawerOpen = !isPWA;
 		}
 	});
-	let deferredPrompt;
+	let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 	onMount(async () => {
 		await Promise.all([getChatHistory(), checkWorkspaceStatus()]);
-		window.addEventListener('beforeinstallprompt', (e) => {
+		window.addEventListener('beforeinstallprompt', (e: Event) => {
 			e.preventDefault();
-			deferredPrompt = e;
+			deferredPrompt = e as BeforeInstallPromptEvent;
 		});
 	});
 
@@ -291,7 +296,7 @@
 			>
 		</Drawer.Header>
 		<Drawer.Footer>
-				<Button on:click={installPWA}>Ekle</Button>
+				<Button onclick={installPWA}>Ekle</Button>
 			<Drawer.Close>İptal</Drawer.Close>
 		</Drawer.Footer>
 	</Drawer.Content>
