@@ -53,19 +53,29 @@
 	}
 
 	async function checkWorkspaceStatus() {
-		toast.info('Hizmet durumu kontrol ediliyor');
-		try {
-			const response = await fetch(`https://dini-bilgiler.pages.dev/api/chat`);
-			const data = await response.json();
-			workspaceStatus = data.status;
-			if (workspaceStatus === 'offline') {
-				toast.error('Hizmete erişilemiyor');
+		const statusPromise = new Promise(async (resolve, reject) => {
+			try {
+				const response = await fetch(`https://dini-bilgiler.pages.dev/api/chat`);
+				const data = await response.json();
+				workspaceStatus = data.status;
+				if (workspaceStatus === 'offline') {
+					reject('offline');
+				} else {
+					resolve(data);
+				}
+			} catch (error) {
+				workspaceStatus = 'offline';
+				reject(error);
 			}
-		} catch (error) {
-			workspaceStatus = 'offline';
-			toast.error('Hizmete erişilemiyor');
-		}
+		});
+
+		toast.promise(statusPromise, {
+			loading: 'Hizmet durumu kontrol ediliyor',
+			success: () => 'Hizmet aktif',
+			error: 'Hizmete erişilemiyor'
+		});
 	}
+
 	async function getChatHistory() {
 		try {
 			const response = await fetch(
