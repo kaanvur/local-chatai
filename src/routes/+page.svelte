@@ -25,6 +25,7 @@
 	let messages = $state<{ isUser: boolean; text: string }[]>([]);
 	let workspaceStatus: 'checking' | 'online' | 'offline' = $state('checking');
 	let chatContainer: HTMLDivElement;
+	import * as Drawer from '$lib/components/ui/drawer/index.js';
 
 	$effect(() => {
 		if (messagesStore) {
@@ -96,15 +97,43 @@
 		await sendMessage(message);
 		message = '';
 	}
+
+	let isPWA = false;
+	let drawerOpen = $state(false);
+
+	$effect(() => {
+		if (typeof window !== 'undefined') {
+			isPWA = window.matchMedia('(display-mode: window-controls-overlay)').matches ||
+			window.matchMedia('(display-mode: standalone)').matches;
+			drawerOpen = !isPWA;
+		}
+	});
+	let deferredPrompt;
+
 	onMount(async () => {
 		await Promise.all([getChatHistory(), checkWorkspaceStatus()]);
+		window.addEventListener('beforeinstallprompt', (e) => {
+			e.preventDefault();
+			deferredPrompt = e;
+		});
 	});
+
+	async function installPWA() {
+		if (!deferredPrompt) return;
+		
+		deferredPrompt.prompt();
+		const { outcome } = await deferredPrompt.userChoice;
+		
+		if (outcome === 'accepted') {
+			console.log('PWA installed');
+		}
+		
+		deferredPrompt = null;
+	}
 </script>
 
 <div class="grid h-dvh place-items-center">
-	<Card.Root
-		class="glassy mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col"
-	>
+	<Card.Root class="glassy mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col">
 		<Card.Header>
 			<div class="flex items-center justify-between">
 				<div>
@@ -253,3 +282,17 @@
 		</Card.Footer>
 	</Card.Root>
 </div>
+
+<Drawer.Root open={drawerOpen}>
+	<Drawer.Content>
+		<Drawer.Header>
+			<Drawer.Title>Uygulama olarak eklemek ister misiniz?</Drawer.Title>
+			<Drawer.Description>Telefonunuzdan ya da bilgisayarınız kolay erişim sağla</Drawer.Description
+			>
+		</Drawer.Header>
+		<Drawer.Footer>
+				<Button on:click={installPWA}>Ekle</Button>
+			<Drawer.Close>İptal</Drawer.Close>
+		</Drawer.Footer>
+	</Drawer.Content>
+</Drawer.Root>
