@@ -9,6 +9,7 @@
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
 	import { Copy, Plus, Volume2, SendHorizontal, RotateCcw, CircleStop } from 'lucide-svelte';
+	import { buttonVariants } from '$lib/components/ui/button';
 	import {
 		voiceReading,
 		activeReading,
@@ -213,10 +214,12 @@
 				<div class="ml-2 grid items-start">
 					<Tooltip.Provider>
 						<Tooltip.Root>
-							<Tooltip.Trigger>
-								<Button type="submit" variant="outline" size="icon" disabled={$loading}>
-									<SendHorizontal />
-								</Button>
+							<Tooltip.Trigger
+								disabled={$loading}
+								class={buttonVariants({ variant: 'outline', size: 'icon' })}
+								onclick={handleSubmit}
+							>
+								<SendHorizontal />
 							</Tooltip.Trigger>
 							<Tooltip.Content>
 								<p>Gönder</p>
@@ -225,16 +228,11 @@
 					</Tooltip.Provider>
 					<Tooltip.Provider>
 						<Tooltip.Root>
-							<Tooltip.Trigger>
-								<Button
-									class={`${$loading || 'hidden'}`}
-									type="button"
-									onclick={stopMessage}
-									variant="outline"
-									size="icon"
-								>
-									<CircleStop />
-								</Button>
+							<Tooltip.Trigger
+								class={`${buttonVariants({ variant: 'outline', size: 'icon' })} ${$loading || 'hidden'}`}
+								onclick={stopMessage}
+							>
+								<CircleStop />
 							</Tooltip.Trigger>
 							<Tooltip.Content>
 								<p>Durdur</p>
@@ -243,18 +241,13 @@
 					</Tooltip.Provider>
 					<Tooltip.Provider>
 						<Tooltip.Root>
-							<Tooltip.Trigger>
-								<Button
-									type="button"
-									class={`${(!$loading && messages.length > 0) || 'hidden'}`}
-									variant="outline"
-									size="icon"
-									onclick={() => {
-										regenerateMessage();
-									}}
-								>
-									<RotateCcw />
-								</Button>
+							<Tooltip.Trigger
+								class={`${buttonVariants({ variant: 'outline', size: 'icon' })} ${(!$loading && messages.length > 0) || 'hidden'}`}
+								onclick={() => {
+									regenerateMessage();
+								}}
+							>
+								<RotateCcw />
 							</Tooltip.Trigger>
 							<Tooltip.Content>
 								<p>Tekrar Cevapla</p>
