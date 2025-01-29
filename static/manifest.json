@@ -1,7 +1,7 @@
 {
-  "name": "Local ChatAI",
-  "short_name": "ChatAI",
-  "description": "Local ChatAI Application",
+  "name": "Local Dini Bilgiler",
+  "short_name": "Dini Bilgiler",
+  "description": "Local Dini Bilgiler Application",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
