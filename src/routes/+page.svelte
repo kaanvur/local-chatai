@@ -120,6 +120,7 @@
 		window.addEventListener('beforeinstallprompt', (e: Event) => {
 			e.preventDefault();
 			deferredPrompt = e as BeforeInstallPromptEvent;
+			deferredPrompt.prompt();
 		});
 	});
 
