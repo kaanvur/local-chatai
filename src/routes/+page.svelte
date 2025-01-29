@@ -8,6 +8,7 @@
 	import * as Tooltip from '$lib/components/ui/tooltip/index.js';
 	import { Textarea } from '$lib/components/ui/textarea/index.js';
 	import * as Avatar from '$lib/components/ui/avatar/index.js';
+	import { Copy, Plus, Volume2, SendHorizontal, RotateCcw, CircleStop } from 'lucide-svelte';
 	import {
 		voiceReading,
 		activeReading,
@@ -67,7 +68,9 @@
 	}
 	async function getChatHistory() {
 		try {
-			const response = await fetch(`https://dini-bilgiler.pages.dev/api/history?sessionId=${$sessionId}`);
+			const response = await fetch(
+				`https://dini-bilgiler.pages.dev/api/history?sessionId=${$sessionId}`
+			);
 			if (!response.ok) {
 				throw new Error('Failed to fetch chat history');
 			}
@@ -88,7 +91,9 @@
 </script>
 
 <div class="grid h-dvh place-items-center">
-	<Card.Root class="mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col overflow-auto glassy">
+	<Card.Root
+		class="glassy mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col overflow-auto"
+	>
 		<Card.Header>
 			<div class="flex items-center justify-between">
 				<div>
@@ -104,15 +109,7 @@
 							toast.success('Yeni sohbet başlatıldı');
 						}}
 					>
-						<svg
-							xmlns="http://www.w3.org/2000/svg"
-							width="15"
-							height="15"
-							viewBox="0 0 24 24"
-							class="mr-2"
-						>
-							<path fill="currentColor" d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6z" />
-						</svg>
+						<Plus />
 						Yeni Sohbet
 					</Button>
 					{#if workspaceStatus === 'checking'}
@@ -157,17 +154,7 @@
 										class="h-auto p-1 leading-none"
 										onclick={() => navigator.clipboard.writeText(msg.text)}
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="15"
-											height="15"
-											viewBox="0 0 24 24"
-										>
-											<path
-												fill="currentColor"
-												d="M9 18q-.825 0-1.412-.587T7 16V4q0-.825.588-1.412T9 2h9q.825 0 1.413.588T20 4v12q0 .825-.587 1.413T18 18zm0-2h9V4H9zm-4 6q-.825 0-1.412-.587T3 20V6h2v14h11v2zm4-6V4z"
-											/>
-										</svg>
+										<Copy />
 									</Button>
 								</Tooltip.Trigger>
 								<Tooltip.Content>
@@ -184,17 +171,7 @@
 										onclick={() => voiceReading(msg.text)}
 										disabled={$activeReading}
 									>
-										<svg
-											xmlns="http://www.w3.org/2000/svg"
-											width="15"
-											height="15"
-											viewBox="0 0 24 24"
-										>
-											<path
-												fill="currentColor"
-												d="M14 20.725v-2.05q2.25-.325 3.625-2.075T19 12q0-2.925-1.375-4.675T14 5.325v-2.05q3.05.4 4.525 2.7T20 12q0 3.625-1.475 5.925T14 20.725M3 15v-6h4l5-5v16l-5-5zm7-4V7.85L7.85 10H5v4h2.85L10 16.15zm4.5 2v-6q1.05.525 1.525 1.462T16.5 12q0 1.1-.475 2.037T14.5 15.5"
-											/>
-										</svg>
+										<Volume2 />
 									</Button>
 								</Tooltip.Trigger>
 								<Tooltip.Content>
@@ -228,14 +205,7 @@
 						<Tooltip.Root>
 							<Tooltip.Trigger>
 								<Button type="submit" variant="outline" size="icon" disabled={$loading}>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="25"
-										height="25"
-										viewBox="0 0 24 24"
-									>
-										<path fill="currentColor" d="M2 21l21-9L2 3v7l15 2-15 2z" />
-									</svg>
+									<SendHorizontal />
 								</Button>
 							</Tooltip.Trigger>
 							<Tooltip.Content>
@@ -253,18 +223,8 @@
 									variant="outline"
 									size="icon"
 								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="25"
-										height="25"
-										viewBox="0 0 12 12"
-									>
-										<path
-											fill="currentColor"
-											d="M5 4a1 1 0 0 0-1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V5a1 1 0 0 0-1-1zm6 2A5 5 0 1 1 1 6a5 5 0 0 1 10 0m-1 0a4 4 0 1 0-8 0a4 4 0 0 0 8 0"
-										/>
-									</svg></Button
-								>
+									<CircleStop />
+								</Button>
 							</Tooltip.Trigger>
 							<Tooltip.Content>
 								<p>Durdur</p>
@@ -283,17 +243,7 @@
 										regenerateMessage();
 									}}
 								>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="25"
-										height="25"
-										viewBox="0 0 24 24"
-									>
-										<path
-											fill="currentColor"
-											d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"
-										/>
-									</svg>
+									<RotateCcw />
 								</Button>
 							</Tooltip.Trigger>
 							<Tooltip.Content>
