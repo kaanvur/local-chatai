@@ -120,10 +120,21 @@
 		window.addEventListener('beforeinstallprompt', (e: Event) => {
 			e.preventDefault();
 			deferredPrompt = e as BeforeInstallPromptEvent;
-			deferredPrompt.prompt();
 		});
 	});
 
+	async function installPWA() {
+		if (!deferredPrompt) return;
+		
+		deferredPrompt.prompt();
+		const { outcome } = await deferredPrompt.userChoice;
+		
+		if (outcome === 'accepted') {
+			console.log('PWA installed');
+		}
+		drawerOpen = false;
+		deferredPrompt = null;
+	}
 </script>
 
 <div class="grid h-dvh place-items-center">
@@ -284,6 +295,9 @@
 			<Drawer.Description>Telefonunuzdan ya da bilgisayarınız kolay erişim sağla</Drawer.Description
 			>
 		</Drawer.Header>
-
+		<Drawer.Footer>
+				<Button onclick={installPWA}>Ekle</Button>
+			<Drawer.Close>İptal</Drawer.Close>
+		</Drawer.Footer>
 	</Drawer.Content>
 </Drawer.Root>
