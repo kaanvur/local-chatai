@@ -232,7 +232,6 @@
 			>
 				<Textarea
 					placeholder="soru sor"
-					autofocus
 					bind:value={message}
 					readonly={$loading}
 					onkeypress={(e) => {
