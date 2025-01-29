@@ -124,18 +124,6 @@
 		});
 	});
 
-	async function installPWA() {
-		if (!deferredPrompt) return;
-		
-		deferredPrompt.prompt();
-		const { outcome } = await deferredPrompt.userChoice;
-		
-		if (outcome === 'accepted') {
-			console.log('PWA installed');
-		}
-		
-		deferredPrompt = null;
-	}
 </script>
 
 <div class="grid h-dvh place-items-center">
