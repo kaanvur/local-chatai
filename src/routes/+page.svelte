@@ -103,7 +103,7 @@
 
 <div class="grid h-dvh place-items-center">
 	<Card.Root
-		class="glassy mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col overflow-auto"
+		class="glassy mx-auto flex h-dvh max-h-[800px] w-full max-w-6xl flex-col"
 	>
 		<Card.Header>
 			<div class="flex items-center justify-between">
@@ -158,15 +158,12 @@
 					</div>
 					<div class={`${msg.isUser ? ' justify-end' : ''} mx-11 flex`}>
 						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger>
-									<Button
-										variant="outline"
-										class="h-auto p-1 leading-none"
-										onclick={() => navigator.clipboard.writeText(msg.text)}
-									>
-										<Copy />
-									</Button>
+							<Tooltip.Root delayDuration={0}>
+								<Tooltip.Trigger
+									class={`${buttonVariants({ variant: 'outline' })} h-auto px-1 py-1`}
+									onclick={() => navigator.clipboard.writeText(msg.text)}
+								>
+									<Copy />
 								</Tooltip.Trigger>
 								<Tooltip.Content>
 									<p>Panoya kopyala</p>
@@ -174,16 +171,13 @@
 							</Tooltip.Root>
 						</Tooltip.Provider>
 						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger class="ml-2">
-									<Button
-										variant="outline"
-										class="h-auto p-1 leading-none"
-										onclick={() => voiceReading(msg.text)}
-										disabled={$activeReading}
-									>
-										<Volume2 />
-									</Button>
+							<Tooltip.Root delayDuration={0}>
+								<Tooltip.Trigger
+									class={`${buttonVariants({ variant: 'outline' })} ml-2 h-auto px-1 py-1`}
+									onclick={() => voiceReading(msg.text)}
+									disabled={$activeReading}
+								>
+									<Volume2 />
 								</Tooltip.Trigger>
 								<Tooltip.Content>
 									<p>Sesli Oku</p>
