@@ -132,7 +132,6 @@
 		if (outcome === 'accepted') {
 			console.log('PWA installed');
 		}
-		drawerOpen = false;
 		deferredPrompt = null;
 	}
 </script>
@@ -288,14 +287,14 @@
 </div>
 
 <Drawer.Root open={drawerOpen}>
-	<Drawer.Content>
+	<Drawer.Content class="container mx-auto">
 		<Drawer.Header>
 			<Drawer.Title>Uygulama olarak eklemek ister misiniz?</Drawer.Title>
 			<Drawer.Description>Telefonunuzdan ya da bilgisayarınız kolay erişim sağla</Drawer.Description
 			>
 		</Drawer.Header>
 		<Drawer.Footer>
-				<Button onclick={installPWA}>Ekle</Button>
+				<Drawer.Close onclick={installPWA} class={buttonVariants({ variant: 'default' })}>Ekle</Drawer.Close>
 			<Drawer.Close>İptal</Drawer.Close>
 		</Drawer.Footer>
 	</Drawer.Content>
