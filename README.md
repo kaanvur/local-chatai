@@ -76,12 +76,13 @@ npm run build
 
 1. `.env` dosyası oluşturun:
 ```env
-VITE_API_KEY=your_api_key
-VITE_API_URL=your_api_url
-VITE_PLAYHTTP_URL=your_playhttp_url
-VITE_PLAYHTTTP_API_KEY=your_playhttp_api_key
-VITE_PLAYHTTTP_USER_ID=your_playhttp_user_id
-VITE_PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
+API_KEY= your local device api key
+API_URL= your local device url for api
+PUBLIC_API_URL= your deployed api url for static files
+PLAYHTTP_URL= your tts service url (exp: https://play.ht/)
+PLAYHTTTP_API_KEY=your_playhttp_api_key
+PLAYHTTTP_USER_ID=your_playhttp_user_id
+PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 ```
 
 ## 🤖 Local LLM Model API

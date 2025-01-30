@@ -1,4 +1,5 @@
 import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
 import { PLAYHTTP_URL, PLAYHTTTP_API_KEY, PLAYHTTTP_USER_ID  } from '$env/static/private';
 
 const CORS_HEADERS = {
