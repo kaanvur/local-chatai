@@ -3,7 +3,7 @@
 		prompt(): Promise<void>;
 		userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>;
 	}
-
+	import { PUBLIC_API_URL } from '$env/static/public';
 	import { onMount } from 'svelte';
 	import { v4 as uuidv4 } from 'uuid';
 	import { marked } from 'marked';
@@ -62,7 +62,7 @@
 	async function checkWorkspaceStatus() {
 		const statusPromise = new Promise(async (resolve, reject) => {
 			try {
-				const response = await fetch(`https://dini-bilgiler.pages.dev/api/chat`);
+				const response = await fetch(`${PUBLIC_API_URL}/chat`);
 				const data = await response.json();
 				workspaceStatus = data.status;
 				if (workspaceStatus === 'offline') {
@@ -85,9 +85,7 @@
 
 	async function getChatHistory() {
 		try {
-			const response = await fetch(
-				`https://dini-bilgiler.pages.dev/api/history?sessionId=${$sessionId}`
-			);
+			const response = await fetch(`${PUBLIC_API_URL}/history?sessionId=${$sessionId}`);
 			if (!response.ok) {
 				throw new Error('Failed to fetch chat history');
 			}
@@ -308,9 +306,7 @@
 			>
 		</Drawer.Header>
 		<Drawer.Footer>
-			<Drawer.Close class={buttonVariants({ variant: 'default' })}
-				>Kapat</Drawer.Close
-			>
+			<Drawer.Close class={buttonVariants({ variant: 'default' })}>Kapat</Drawer.Close>
 		</Drawer.Footer>
 	</Drawer.Content>
 </Drawer.Root>
