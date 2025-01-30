@@ -308,10 +308,9 @@
 			>
 		</Drawer.Header>
 		<Drawer.Footer>
-			<Drawer.Close onclick={installPWA} class={buttonVariants({ variant: 'default' })}
-				>Ekle</Drawer.Close
+			<Drawer.Close class={buttonVariants({ variant: 'default' })}
+				>Kapat</Drawer.Close
 			>
-			<Drawer.Close>İptal</Drawer.Close>
 		</Drawer.Footer>
 	</Drawer.Content>
 </Drawer.Root>
