@@ -113,6 +113,9 @@
 				window.matchMedia('(display-mode: standalone)').matches;
 			drawerOpen = !isPWA;
 		}
+		setTimeout(() => {
+			drawerOpen = false;
+		}, 5000);
 	});
 	let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
