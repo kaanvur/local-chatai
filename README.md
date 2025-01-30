@@ -54,8 +54,7 @@ local-chatai/
 
 3. **Ses Özellikleri**
    - Text-to-Speech
-   - Ses kontrolü
-   - Durdurma/Oynatma
+   - api desteği: [play.ht](https://play.ht/)
 
 4. **PWA Hazır**
    - Uygulama prograssive web app olarak çalışır.
