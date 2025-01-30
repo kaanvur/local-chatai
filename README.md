@@ -17,7 +17,7 @@ herhangi bir endpoint ile uyumlu yapay zeka destekli bir chatbot uygulaması. Lo
 - **Frontend Framework:** SvelteKit
 - **UI Framework:** Shadcn-Svelte
 - **Styling:** Tailwind CSS
-- **API:** OpenAI GPT-4
+- **API:** Anything LLM (Local Host)
 - **State Management:** Svelte Stores
 - **Storage:** LocalStorage
 - **Deployment:** Cloudflare Pages
@@ -55,6 +55,17 @@ local-chatai/
    - Text-to-Speech
    - Ses kontrolü
    - Durdurma/Oynatma
+
+4. **PWA Hazır**
+   - Uygulama prograssive web app olarak çalışır.
+   - Tarayıcıdan desktop ya da mobil uygulama olarak indirilebilir.
+   - Hazır şekilde çalışır
+
+5. **Native Mobile Support**
+   - Capacitor kütüphanesi eklidir
+   - ```pnpm run build:st ya da npm run build:st``` komutu ile mobil uygulamaya dönüştürmeye hazır static çıktı alınabilir.
+   - mobil app development için devamı [buradan](https://capacitorjs.com/docs/getting-started#initialize-your-capacitor-config) dökümantasyondan takip edilebilir.
+   - ios için xcode, android için android studio ile mobil uygulamaya dönüştürme işlemi yapılarak mobil cihazlarda çalıştırılabilir.
 
 ## 🚀 Kurulum
 
@@ -106,7 +117,11 @@ PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
   - Public Hostname alanına domain adınıza subdomain ekleyin. (örnek: apiurl.yourdomain.com)
   - service kısımına local ip ve port numarasını girin.
   - ![Local LLM Model Setup](guide_image/cloudflare_tunnel2.jpg)
-
+## Development
+### Tailwind
+### SvelteKit
+### Shadcn
+### Capacitor
 ## 💻 Deployment
 ### Cloudflare Ayarları
 1. Cloudflare > Compute (Workers) > Workers & Pages sayfasına gidin.
@@ -114,7 +129,6 @@ PLAYHTTTP_VOICE_ID=your_playhttp_voice_id
 3. Pages sekmesine tıklayın ve "Connect to Git" butonuna tıklayın. buradan github hesabınızı bağlayın ve projenizi seçin. ya da proje dosyalarını "upload assets" kısmından yükleyin.
 4. Burada proje isminizi girin size proje isminizde bir development url verecektir ayarları da yapın ve "Deploy Site" butonuna tıklayın.
 5. ![Local LLM Model Setup](guide_image/cloudflare_deploy.jpg)
-
 
 ## 📝 Lisans
 
