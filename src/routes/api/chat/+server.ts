@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { env } from '$env/dynamic/private';
+import { API_URL, API_KEY  } from '$env/static/private';
 
 const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
@@ -17,10 +17,10 @@ export const OPTIONS: RequestHandler = async () => {
 };
 export const GET: RequestHandler = async () => {
     try {
-        const response = await fetch(`${env.VITE_API_URL}/api/v1/auth`, {
+        const response = await fetch(`${API_URL}/api/v1/auth`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${env.VITE_API_KEY}`,
+                'Authorization': `Bearer ${API_KEY}`,
                 'Content-Type': 'application/json'
             }
         });
@@ -48,11 +48,11 @@ export const POST: RequestHandler = async ({ request }) => {
     const { message, sessionId } = await request.json();
     
     try {
-        const response = await fetch(`${env.VITE_API_URL}/api/v1/workspace/deneme/stream-chat`, {
+        const response = await fetch(`${API_URL}/api/v1/workspace/deneme/stream-chat`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${env.VITE_API_KEY}`,
+                'Authorization': `Bearer ${API_KEY}`,
                 'accept': 'text/event-stream'
             },
             body: JSON.stringify({

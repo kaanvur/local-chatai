@@ -1,5 +1,5 @@
 import { json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
+import { PLAYHTTP_URL, PLAYHTTTP_API_KEY, PLAYHTTTP_USER_ID  } from '$env/static/private';
 
 const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
@@ -20,13 +20,13 @@ export async function POST({ request }) {
 	try {
 		const { text } = await request.json();
 
-		const response = await fetch(`${env.VITE_PLAYHTTP_URL}`, {
+		const response = await fetch(`${PLAYHTTP_URL}`, {
 			method: 'POST',
 			headers: {
 				'accept': 'audio/mpeg',
 				'content-type': 'application/json',
-				'AUTHORIZATION': `${env.VITE_PLAYHTTTP_API_KEY}`,
-				'X-USER-ID': `${env.VITE_PLAYHTTTP_USER_ID}`
+				'AUTHORIZATION': `${PLAYHTTTP_API_KEY}`,
+				'X-USER-ID': `${PLAYHTTTP_USER_ID}`
 			},
 			body: JSON.stringify({
 				text: text,

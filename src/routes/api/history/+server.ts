@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { env } from '$env/dynamic/private';
+import { VITE_API_URL, VITE_API_KEY } from '$env/static/private';
 
 const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
@@ -41,10 +41,10 @@ export const GET: RequestHandler = async ({ url }) => {
     }
 
     try {
-        const response = await fetch(`${env.VITE_API_URL}/api/v1/workspace/deneme/chats?apiSessionId=${sessionId}&orderBy=asc`, {
+        const response = await fetch(`${VITE_API_URL}/api/v1/workspace/deneme/chats?apiSessionId=${sessionId}&orderBy=asc`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${env.VITE_API_KEY}`,
+                'Authorization': `Bearer ${VITE_API_KEY}`,
                 'accept': 'application/json'
             }
         });
