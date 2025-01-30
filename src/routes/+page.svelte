@@ -106,46 +106,23 @@
 
 	$effect(() => {
 		if (typeof window !== 'undefined') {
+			const hasSeenDrawer = localStorage.getItem('hasSeenDrawer');
 			isPWA =
 				window.matchMedia('(display-mode: window-controls-overlay)').matches ||
 				window.matchMedia('(display-mode: standalone)').matches;
-			drawerOpen = !isPWA;
+			if (!hasSeenDrawer && !isPWA) {
+				drawerOpen = true;
+				localStorage.setItem('hasSeenDrawer', 'true');
+				setTimeout(() => {
+					drawerOpen = false;
+				}, 5000);
+			}
 		}
-		setTimeout(() => {
-			drawerOpen = false;
-		}, 5000);
 	});
-	let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 	onMount(async () => {
 		await Promise.all([getChatHistory(), checkWorkspaceStatus()]);
-		if (window) {
-			console.log('window available');
-			if ('serviceWorker' in navigator) {
-				console.log('service worker supported');
-			} else {
-				console.log('service worker not supported');
-			}
-			window.addEventListener('beforeinstallprompt', (e) => {
-				console.log('beforeinstallprompt event fired');
-				e.preventDefault();
-				deferredPrompt = e as BeforeInstallPromptEvent;
-			});
-		}
 	});
-
-	async function installPWA() {
-		console.log(deferredPrompt);
-
-		if (!deferredPrompt) return;
-
-		deferredPrompt.prompt();
-		const { outcome } = await deferredPrompt.userChoice;
-		if (outcome === 'accepted') {
-			console.log('PWA installed');
-		}
-		deferredPrompt = null;
-	}
 </script>
 
 <div class="grid h-dvh place-items-center">
