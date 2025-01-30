@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { API_URL, API_KEY  } from '$env/static/private';
+import { API_URL, API_KEY } from '$env/static/private';
 
 const CORS_HEADERS = {
     'Access-Control-Allow-Origin': '*',
