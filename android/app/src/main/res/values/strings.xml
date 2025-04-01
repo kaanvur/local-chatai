@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Dini-Bilgiler</string>
+    <string name="title_activity_main">Dini-Bilgiler</string>
+    <string name="package_name">com.kaanvurgun.app</string>
+    <string name="custom_url_scheme">com.kaanvurgun.app</string>
+</resources>

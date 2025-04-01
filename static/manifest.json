@@ -1,0 +1,24 @@
+{
+  "name": "Local Dini Bilgiler",
+  "short_name": "Dini Bilgiler",
+  "description": "Local Dini Bilgiler Application",
+  "start_url": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000000",
+  "scope": ".",
+  "theme_color": "#000000",
+  "prefer_related_applications": false,
+  "icons": [
+        {
+            "src": "appicon.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icon-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
